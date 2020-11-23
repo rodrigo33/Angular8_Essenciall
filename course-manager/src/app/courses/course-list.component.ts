@@ -13,7 +13,7 @@ ngOnInit(): void{
         {
             id: 1,
             name: 'Angular: Forms',
-            imageUrl: '',
+            imageUrl: '/assets/images/forms.png',
             price: 99.99,
             code: 'xps-8796',
             duration: 120,
@@ -23,7 +23,7 @@ ngOnInit(): void{
         {
             id: 2,
             name: 'Angular: Http',
-            imageUrl: '',
+            imageUrl: '/assets/images/http.png',
             price: 95.99,
             code: 'lkl-8796',
             duration: 80,
