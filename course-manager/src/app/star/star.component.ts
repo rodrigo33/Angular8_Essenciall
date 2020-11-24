@@ -8,7 +8,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class StarComponent implements OnChanges{
 
-    //Notação para que a minha variável esteja ilegivel para receber uma informação
+    //Notação para que a minha variável esteja elegivel para receber uma informação
     //de um componente externo
     @Input()
     rating: number = 0;
