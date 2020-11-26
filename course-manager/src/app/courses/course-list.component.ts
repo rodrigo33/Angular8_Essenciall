@@ -15,9 +15,20 @@ _filterBy: string;
 constructor(private courseService: CourseService){}
 
 ngOnInit(): void{
-    this._courses = this.courseService.retrieveAll();        
-    this.filteredCourses = this._courses;
+    this.retrieveAll();
     }
+retrieveAll():void{
+    //subscrevendo o contrato chamando a requisição
+    this.courseService.retrieveAll().subscribe({
+        next: courses => {
+            //o segundo course é o retorno do courseService
+            this._courses = courses
+            this.filteredCourses = this._courses;
+        },
+        error: err => console.log('Error', err)
+    })        
+    
+}
     //criando evento de input para o meu html
     set filter(value: string){
         this._filterBy = value

@@ -1,8 +1,8 @@
 <h2>Course info</h2>
 
 <hr />
-
-<form #courseForm="ngForm">
+<!-- só exibo o formulário caso haja alguma informação -->
+<form #courseForm="ngForm" *ngIf="course">
 
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Name</label>

@@ -1,6 +1,9 @@
+
 import { core } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Course } from './course';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 //usando este decorator, estou dizendo para o angular que estou tornando minha
 //classe elegivel para receber injeção de dependência
@@ -10,19 +13,36 @@ import { Course } from './course';
     providedIn: 'root'
 })
 export class CourseService{
-    retrieveAll(): Course[]{
-        return COURSES;
+
+    private courseUrl: string = 'http://localhost:3100/api/courses'
+    //venho aqui no meu construtor local onde faço a injeção de dependência, 
+    //com isso vou usar os métodos http para fazer a requisição
+    constructor(private httpClient: HttpClient) { }
+    //um observable envelopando uma lista de cursos
+    retrieveAll(): Observable<Course[]>{
+        //retorno aqui será uma array de cursos
+        //o padrão de retorno de um httpclient é um observable-> ele é um envelope
+        //o observable  envelopa a resposta.
+        //A requisição de um observable ela só ela é realizada quando dou um 
+        //.subscribe no observable
+        return this.httpClient.get<Course[]>(this.courseUrl);
+    }
+    //o padrão de retorno de um httpclient é um observable-> ele é um envelope
+    //o observable  envelopa a resposta.
+    retrieveById(id:number): Observable<Course>{
+        return this.httpClient.get<Course>(`${this.courseUrl}/${id}`)
     }
 
-    retrieveById(id:number): Course{
-        return COURSES.find((courseIterator: Course) => courseIterator.id === id);
-    }
-
-    save(course: Course): void{
+    save(course: Course): Observable<Course>{
         if(course.id){
+            //publisher fazendo requisição, escrevendo contrato
+            return this.httpClient.put<Course>(`${this.courseUrl}/${course.id}`, course)
+            //caso não haja id, insiro um novo curso e id
+        }else{
+            return this.httpClient.post<Course>(`${this.courseUrl}`, course)
+
         }
-        const index = COURSES.findIndex((courseIterator: Course) => courseIterator.id === course.id)
-        COURSES[index] = course
+        
     }
 }
 
