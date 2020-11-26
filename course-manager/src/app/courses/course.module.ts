@@ -19,7 +19,7 @@ import { AppPipeModule } from '../shared/pipe/app-pipe.module';
     ], imports: [        
         //declarando forChild pois este módulo não é o meu módulo pai
         FormsModule,
-        AppPipeModule,
+        AppPipeModule,        
         //importando CommonModule traz os pipe e outros nativos do angular
         CommonModule,
         StarModule,
