@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/Forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -16,8 +15,7 @@ import { CourseModule } from './courses/course.module';
     Error404Component    
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
+    BrowserModule,    
     HttpClientModule,
     CourseModule,
     //importando aqui as rotas serão carregadas na root
