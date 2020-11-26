@@ -44,6 +44,10 @@ export class CourseService{
         }
         
     }
+    //o meu retorno aqui é Observable<any>, ou seja, qualquer tipo de objeto, blz
+    deleteById(id:number): Observable<any>{        
+            return this.httpClient.delete<any>(`${this.courseUrl}/${id}`)        
+    }
 }
 
 var COURSES: Course[] = [

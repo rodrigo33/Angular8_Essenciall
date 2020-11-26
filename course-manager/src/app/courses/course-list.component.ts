@@ -29,6 +29,18 @@ retrieveAll():void{
     })        
     
 }
+
+//efetivando a requisição .subscribe
+deleteById(courseId: number): void{
+    this.courseService.deleteById(courseId).subscribe({
+        next: () => {
+            console.log('Deleted with sucess');
+            this.retrieveAll();
+        },
+        error: err => console.log('Error', err)
+    })
+}
+
     //criando evento de input para o meu html
     set filter(value: string){
         this._filterBy = value
