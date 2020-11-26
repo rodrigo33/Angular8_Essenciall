@@ -4,14 +4,14 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
-import { Error404Component } from './error-404/error-404.component';
+
 import { CourseModule } from './courses/course.module';
 import { CoreModule } from './core/core.modules';
 
 @NgModule({
   declarations: [
     AppComponent,           
-    Error404Component    
+       
   ],
   imports: [
     BrowserModule,    
@@ -25,13 +25,8 @@ import { CoreModule } from './core/core.modules';
         //rota padrão do angular na raiz
         //na raiz irá acessar essa rota
         path: '', redirectTo: 'courses', pathMatch: 'full'
-      },      
-      //Outra rota padrão do angular ** quando não encontra a rota digitada o angular
-      //irá redirecionar para o componente informado ai
-      {
-        
-        path: '**', component: Error404Component
       }
+
     ])
   ],
   providers: [],
