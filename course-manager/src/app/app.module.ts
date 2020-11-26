@@ -3,39 +3,26 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/Forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
-import { CourseListComponent } from './courses/course-list.component';
-import { StarComponent } from './star/star.component';
-import { ReplacePipe } from './pipe/replace.pipe';
+
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Error404Component } from './error-404/error-404.component';
-import { CourseInfoComponent } from './courses/course-info.component';
+import { CourseModule } from './courses/course.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CourseListComponent,
-    StarComponent,
-    ReplacePipe,
+    AppComponent,        
     NavBarComponent,
-    Error404Component,
-    CourseInfoComponent
+    Error404Component    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    CourseModule,
     //importando aqui as rotas serão carregadas na root
     RouterModule.forRoot([
-      //rota de listagem dos cursos
-      {        
-        path: 'courses', component: CourseListComponent
-      },
-      {
-        //estou passando alem da url o id
-        path: '/courses/info/:id', component: CourseInfoComponent
-      },
+      
       {
         //rota padrão do angular na raiz
         //na raiz irá acessar essa rota
